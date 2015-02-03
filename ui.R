@@ -4,7 +4,7 @@ library(shiny)
 shinyUI(pageWithSidebar(
   
   # Application title
-  headerPanel("Moodle Analytics 2.4",
+  headerPanel("Moodle Analytics",
               
               ## Suppress the word 'Error' and change color of error messages with CSS styling
               tags$head(
@@ -15,12 +15,16 @@ shinyUI(pageWithSidebar(
   
   sidebarPanel(
     
-    h3("1. Upload your logs"),
-    p("To access the logs from within your Moodle site, click on 'Navigation' > 'Reports' > 'Logs'. 
-      On the 'Logs' page, select 'All participants', 'All days', 'All activities', and 'All actions'. Finally, 
-      select 'Download in text format' and save the file to your computer."),
-    fileInput("userfile", "Then, upload your Moodle log file in .txt format here:", accept="txt file"),
+    h3("1. Upload a Moodle log file"),
+    HTML("<p>To access the logs from within a Moodle site, click on <strong>Navigation</strong> > <strong>Reports</strong> > 
+         <strong>Logs</strong>."),
+    HTML("<p>On the <strong>Logs</strong> page, select: 'All participants', 'All days', 'All activities', and
+         'All actions'.</p>"),
+    HTML("<p>Finally, select <strong>'Download in text format'</strong> and save the file to your computer.</p>"),
     
+    fileInput("userfile", "Then, upload the Moodle log file in .txt format here:", accept="txt file"),
+    
+
     h3("2. Select a student"),
     uiOutput("studentnames"),
     
@@ -35,7 +39,8 @@ shinyUI(pageWithSidebar(
                          "Quiz view" = "quiz view",
                          "URL view" = "url view"  
                        ), 
-                       selected = c("Course view")),
+                       selected = c("course view")),
+    
     p("Questions? Contact linkalis (at) gmail (dot) com.")
     ),
   
